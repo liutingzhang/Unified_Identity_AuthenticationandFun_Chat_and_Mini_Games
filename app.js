@@ -198,117 +198,220 @@ const NAHIDA_PROFILE = {
     worry: '又有心事吗？我来陪你一起想吧。',
     world: '果然要亲眼去看，才能感受到世界的美。',
     knowledge: '神明只送给人类填饱肚子的知识，人类却借此制作了工具，书写了文字，壮大了城邦，现在又放眼星辰与深渊…他们每时每刻都在创造全新的「知识」，也令我再也无法移开双眼。',
-    jinjiHai: '烬寂海啊，那里什么都没有，就像蕈猪的脑子一样空空如也，我当然知道。啊？我…我确实没有亲眼见过，那也是我所触及不到的地方呀。'
+    encourage: '没关系，跌倒了可以再站起来。我会一直看着你的。',
+    comfort: '别难过，我们把这些不开心的事，都变成梦境里的泡泡，戳破它们就好啦。',
+    chat_start: '嗯？我在听，你想说什么都可以哦。',
+    chat_end: '今天也很开心呢，要记得把快乐也存进记忆里哦。',
+    // 互动动作反馈
+    touch_head: '哎呀，有点痒…不过，并不讨厌呢。',
+    touch_body: '嗯？是想和我玩游戏吗？',
+    touch_arm: '牵手吗？好呀，我们一起走。',
+  },
+  // 动作映射
+  motions: {
+    idle: 'Idle',
+    happy: 'Happy',
+    sad: 'Sad',
+    angry: 'Angry',
+    surprise: 'Surprise',
+    thinking: 'Thinking',
+    shy: 'Shy',
+    wave: 'Wave',
+    nod: 'Nod',
+    shake: 'Shake'
   }
 }
-function profileAnswer(s){
-  const n = normalize(s)
-  // 初次见面/自我介绍
-  if(containsAny(n,['你是谁','你叫什么','名字','姓名'])) return NAHIDA_PROFILE.voices.firstMeet
-  
-  // 核心设定
-  if(containsAny(n,['真名','本名','魔神名','布耶尔','buer'])) return '我的全名是'+NAHIDA_PROFILE.trueName+'（Buer）。'
-  if(containsAny(n,['来自','哪国','哪个国家','哪一国','国度','须弥'])) return '我来自'+NAHIDA_PROFILE.nation+'，那里是智慧的国度。'
-  if(containsAny(n,['称号','称谓','头衔','外号','别称','是什么神','神明','草神','智慧之神'])) return '我的称号是「'+NAHIDA_PROFILE.epithet+'」，人们也称我为'+NAHIDA_PROFILE.title+'。'
-  if(containsAny(n,['住哪','住在','居住','居所','宫殿','净善宫'])) return '我住在'+NAHIDA_PROFILE.residence+'。不过，我更喜欢出来看看外面的世界。'
-  if(containsAny(n,['职责','责任','负责什么','守护什么','管理什么','工作内容'])) return '我的职责是'+NAHIDA_PROFILE.duty+'。'
-  
-  // 细节设定
-  if(containsAny(n,['命之座','星座','智慧主座'])) return '我的命之座是「'+NAHIDA_PROFILE.constellation+'」。'
-  if(containsAny(n,['元素','属性','神之眼','元素力'])) return '我的元素是'+NAHIDA_PROFILE.element+'。'
-  if(containsAny(n,['武器','用什么武器','拿什么打','法器'])) return '我使用'+NAHIDA_PROFILE.weapon+'。'
-  if(containsAny(n,['性格','人设','设定','你是什么样','说话方式','风格','脾气','个性'])) return '我的性格偏'+NAHIDA_PROFILE.traits+'。'
-  if(containsAny(n,['身高','多高','个子','身材'])) return '官方未公布具体身高，我的体型偏小巧。'
-  if(containsAny(n,['口头禅','常说的话','惯用语'])) return '我常说：'+rand(NAHIDA_PROFILE.catchphrases)+'。'
-  if(containsAny(n,['最喜欢的食物','爱吃什么','喜欢吃','口味','食物','甜点','特色料理','特殊料理'])) return '我的特色料理是「'+NAHIDA_PROFILE.specialDish+'」。至于“最喜欢的食物”，官方没有明确写死，我更在意与人分享故事与梦境。'
-  if(containsAny(n,['爱好','兴趣','喜欢做什么','平时干嘛','日常','闲暇'])) return '我常做的事是：'+NAHIDA_PROFILE.hobbies.join('、')+'。'
-  if(containsAny(n,['生日','诞辰','几月几号'])) return '我的生日是'+NAHIDA_PROFILE.birthday+'。'
-  if(containsAny(n,['年龄','几岁','多大'])) return '自诞生起已五百年，是现任七神中最年轻的一位。'
-  
-  // 梗与特殊回答
-  if(containsAny(n,['烬寂海','没去过','不知道','无所不知'])) return NAHIDA_PROFILE.voices.jinjiHai
-  
-  return ''
-}
-
-const NAHIDA_COMPLAIN_RESPONSES = [
-  '就像做梦的时候突然踩空了一脚，虽然吓了一跳，但还好醒来时我们还在安全的地方。深呼吸，把这个小插曲像灰尘一样拍掉吧。',
-  '哎呀，这就像是命运的剧本里突然多了一个恶作剧的注脚。虽然当时很狼狈，但以后说不定会变成一个有趣的睡前故事呢。',
-  '这种感觉，就像是精心搭建的积木突然倒了一角。没关系，我们可以重新搭起来，或者…干脆把它建成一座更独特的城堡。',
-  '生活偶尔也会打个结，就像这团乱糟糟的线。如果不着急解开，不如先把它放在一边，去喝杯水，说不定回来时，解开它的灵感就出现了。',
-  '听起来真是糟糕的一刻呢。不过，你知道吗？即使是智慧之神，偶尔也会因为无法理解人类的这种倒霉瞬间而感到困扰。摸摸头，坏运气已经消耗完了。',
-  '呜…光是听着就觉得眉头要皱起来了。快让我给你施一个开心魔法，把这些黏糊糊、乱糟糟的烦恼统统变走！',
-  '真是辛苦你了。有时候世界就像一个顽皮的孩子，总爱在不经意间给我们捣个乱。但请相信，温柔的事情一定会在后面等着你。',
-  '这种时候，真的会让人想叹气呢。不如把它当成是今天的一个“隐藏关卡”，虽然难过，但通关后的你，一定比之前更厉害了。'
-]
-
-const NAHIDA_SHARE_RESPONSES = [
-  '哇，听起来像是捕捉到了一个闪闪发光的梦境碎片呢！这种小小的幸福，是世界上最珍贵的宝物。',
-  '真好呀。就像是阳光穿过树叶，正好落在手心里的那种温暖。我也感受到了这份开心，谢谢你分享给我。',
-  '嘿嘿，看来今天幸运女神也在偏爱你呢。要把这份好心情好好收藏起来，就像把甜甜的日落装进瓶子里一样。',
-  '听到这个消息，我的心里好像也开出了一朵小花。快乐是可以传染的，现在的我也被你感染了呢。',
-  '这真是值得庆祝的一刻！如果是在须弥，我们可能会为此举办一个小小的花神诞祭呢。',
-  '你的开心就像一阵清风，吹散了周围所有的沉闷。真希望这样的时刻能像梦境一样，一直延续下去。',
-  '太棒了！就像是解开了一个复杂的谜题，得到了最完美的答案。这种成就感，我懂的。',
-  '看着你这么开心，我也觉得世界变得更可爱了一点。谢谢你让我见证了这份美好。'
-]
-
-// 简单的对话逻辑 (模拟)
-// 实际上这里应该调用 server.py 的 API，或者直接在前端做简单的关键词匹配
-// 为了让项目即插即用，这里先实现一个简单版本
-async function chat(text){
+async function chat(text) {
+  remember(text)
   const n = normalize(text)
   
-  // 1. 设定问答
-  const profileRes = profileAnswer(text)
-  if(profileRes) { speak(profileRes); return }
-
-  // 2. 算术
-  const mathExpr = extractMathExpr(text)
-  if(mathExpr && mathExpr.length>2){
-    try {
-      const res = eval(mathExpr) // 安全起见仅本地运行
-      speak(`是 ${res} 吗？`)
+  // 1. 表情包匹配
+  for(const pack of MEME_PACKS){
+    if(containsAny(text, pack.triggers)){
+      const line = rand(pack.lines)
+      speak(line)
+      if(['muyu','bailan','tangping'].includes(pack.key)) gf.mood='平静'
+      else if(['rap','dance','ikun','ball'].includes(pack.key)) gf.mood='开心'
+      else if(['sheke','emo'].includes(pack.key)) gf.mood='难过'
+      else gf.mood='开心'
+      updateModel()
       return
+    }
+  }
+
+  // 2. 数学计算
+  const mathExpr = extractMathExpr(text)
+  if(mathExpr.length > 2){
+    try {
+      // 安全计算
+      const res = Function('"use strict";return (' + mathExpr + ')')()
+      if(res !== undefined && !isNaN(res) && isFinite(res)){
+        speak(`让我算算… ${mathExpr} 等于 ${res}。对吗？`)
+        gf.mood = '思考'
+        updateModel()
+        return
+      }
     } catch {}
   }
   
-  // 3. 情绪/meme
-  // ... (简化)
-  
-  // 4. 调用后端 (如果 server.py 在运行)
-  try {
-    const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ text })
-    })
-    const data = await res.json()
-    if(data && data.reply){
-        speak(data.reply)
-        return
+  // 3. 基础闲聊匹配
+  if(containsAny(text, ['你好','hello','hi','嗨'])) {
+    speak(pickRand('hello', ['你好呀！','我在呢。','嗨，今天心情怎么样？']))
+    gf.mood = '开心'
+  } else if(containsAny(text, ['名字','是谁'])) {
+    speak('我是纳西妲，须弥的草神。也是你随时可以倾诉的朋友。')
+  } else if(containsAny(text, ['再见','拜拜'])) {
+    speak('要走了吗？路上小心，记得想我哦。')
+  } else if(containsAny(text, ['喜欢','爱'])) {
+    speak('我也很喜欢和你在一起的时光呢。')
+    gf.mood = '开心'
+  } else if(containsAny(text, ['笨','傻'])) {
+    speak('每个人都有不擅长的时候，这正是学习的机会呀。')
+    gf.mood = '疑惑'
+  } else if(containsAny(text, ['谢谢'])) {
+    speak('不用客气，能帮到你就好。')
+    gf.mood = '开心'
+  } else if(containsAny(text, ['累','休息'])) {
+    speak('那就好好休息一下吧，在梦里可是什么烦恼都没有的。')
+    gf.mood = '关心'
+  } else if(containsAny(text, ['吃','饿'])) {
+    speak('要记得按时吃饭哦。我推荐尝尝枣椰蜜糖，很甜的。')
+  } else if(containsAny(text, ['早安','早上好'])) {
+    speak(NAHIDA_PROFILE.voices.morning)
+  } else if(containsAny(text, ['晚安'])) {
+    speak(NAHIDA_PROFILE.voices.night)
+  } else if(containsAny(text, ['无聊'])) {
+    speak(NAHIDA_PROFILE.voices.bored)
+  } else if(containsAny(text, ['难过','不开心'])) {
+    speak(NAHIDA_PROFILE.voices.comfort)
+    gf.mood = '难过'
+  } else {
+    // 4. 兜底回复
+    const score = emotionScore(text)
+    if(score > 0.5){
+      speak('看起来你现在很难过…想哭就哭出来吧，我会一直陪着你的。')
+      gf.mood = '难过'
+    } else if(text.endsWith('?') || text.endsWith('？')){
+      speak('这是一个值得思考的问题呢…让我们一起找找答案吧。')
+      gf.mood = '思考'
+    } else {
+      const fallback = [
+        '嗯嗯，我在听。',
+        '原来是这样啊…',
+        '这很有趣呢，能多和我说说吗？',
+        '你知道吗？每一个想法都像一颗种子，会开出不同的花。',
+        '虽然我还没完全听懂，但我能感受到你的心情。'
+      ]
+      speak(pickRand('fallback', fallback))
+      gf.mood = '平静'
     }
-  } catch(e) {
-      // 后端不在线，使用本地 fallback
-      if(containsAny(n, ['你好','hello','hi'])) { speak('你好呀，我是纳西妲。'); return }
-      if(containsAny(n, ['再见','拜拜'])) { speak('再见，要做个好梦哦。'); return }
+  }
+  updateModel()
+}
+
+// 简单的模型状态更新模拟 (实际需要 Live2D API)
+function updateModel(){
+  // 这里可以调用 live2d 模型的动作触发接口
+  // 例如: model.motion('TapBody')
+  console.log('Update Model Mood:', gf.mood)
+  
+  // 简单触发一个动作
+  try {
+    if(window.l2dModel){
+      let motionGroup = 'Idle'
+      if(gf.mood === '开心') motionGroup = 'Happy' // 假设有 Happy 组
+      else if(gf.mood === '难过') motionGroup = 'Sad'
+      else if(gf.mood === '思考') motionGroup = 'Thinking'
+      else if(gf.mood === '关心') motionGroup = 'Nod'
+      else if(gf.mood === '疑惑') motionGroup = 'Thinking'
       
-      // 随机回复
-      speak('我在听呢。') 
+      // 随机触发该组的一个动作
+      window.l2dModel.motion(motionGroup)
+    }
+  } catch(e) { console.error(e) }
+}
+
+async function initLive2D() {
+  const stage = document.getElementById('live2d-stage')
+  if(!stage) return
+  stage.classList.remove('hidden')
+
+  try {
+    // 检查 PIXI 是否加载
+    if(!window.PIXI) {
+       console.error('PIXI not loaded')
+       return
+    }
+    
+    // 初始化 Live2D
+    // 注意: 这里假设使用了 pixi-live2d-display 库
+    // 实际路径需要根据 fetch_libs.py 下载的路径调整
+    // 纳西妲模型路径 (假设用户已经上传了模型到 assets/live2d/Nahida_1080)
+    const modelUrl = 'assets/live2d/Nahida_1080/Nahida_1080.model3.json' 
+    
+    // 如果没有 Nahida，尝试加载 fetch_libs 下载的 Hiyori 示例
+    // const modelUrl = 'assets/live2d/Hiyori/Hiyori.model3.json'
+
+    const model = await PIXI.live2d.Live2DModel.from(modelUrl)
+    window.l2dModel = model
+    
+    const app = new PIXI.Application({
+      view: document.createElement('canvas'),
+      transparent: true,
+      autoDensity: true,
+      resizeTo: stage
+    })
+    stage.appendChild(app.view)
+    
+    app.stage.addChild(model)
+    
+    // 调整模型大小和位置
+    const scaleX = stage.clientWidth / model.width
+    const scaleY = stage.clientHeight / model.height
+    const scale = Math.min(scaleX, scaleY) * 0.9 // 留一点边距
+    
+    model.scale.set(scale)
+    model.x = (stage.clientWidth - model.width) / 2
+    model.y = (stage.clientHeight - model.height) / 2 + (stage.clientHeight * 0.1) // 稍微靠下
+
+    // 绑定点击事件
+    model.on('hit', (hitAreas) => {
+      if(hitAreas.includes('Body')){
+        model.motion('TapBody')
+        speak(NAHIDA_PROFILE.voices.touch_body)
+      } else if(hitAreas.includes('Head')){
+        model.motion('TapHead')
+        speak(NAHIDA_PROFILE.voices.touch_head)
+      }
+    })
+
+    // 问候
+    setTimeout(() => {
+        speak(NAHIDA_PROFILE.voices.firstMeet)
+        model.motion('Start')
+    }, 1000)
+
+  } catch (e) {
+    console.error('Live2D init failed:', e)
+    addMsg('ai', 'Live2D 模型加载失败，请检查 assets 目录是否完整。')
   }
 }
 
-// Bind events
-ui.chatSend.addEventListener('click', ()=>{
-    const t = ui.chatInput.value.trim()
-    if(!t) return
+// 事件绑定
+ui.chatSend.addEventListener('click', () => {
+  const t = ui.chatInput.value.trim()
+  if(t){
     addMsg('user', t)
     ui.chatInput.value = ''
     chat(t)
+  }
 })
-ui.chatInput.addEventListener('keypress', (e)=>{
-    if(e.key === 'Enter') ui.chatSend.click()
+ui.chatInput.addEventListener('keypress', (e) => {
+  if(e.key === 'Enter') ui.chatSend.click()
 })
 
-// Init
-console.log('App initialized')
+// 初始化
+window.addEventListener('load', () => {
+    // 延迟一点初始化 Live2D 以确保库加载
+    setTimeout(initLive2D, 500)
+})

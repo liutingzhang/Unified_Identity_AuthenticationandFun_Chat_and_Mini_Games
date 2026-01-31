@@ -98,67 +98,25 @@ class Handler(BaseHTTPRequestHandler):
             except Exception as e:
                 return self._fail(str(e))
         if self.path == '/model/uploadfolder':
-            folder_name = data.get('name') or 'model-folder'
-            files = data.get('files') or []
-            if not files:
-                return self._fail('no files')
-            try:
-                base = os.path.join(ROOT, 'assets', 'live2d', folder_name)
-                os.makedirs(base, exist_ok=True)
-                for f in files:
-                    rel = f.get('path') or f.get('name')
-                    b64 = f.get('content')
-                    if not rel or not b64: continue
-                    out = os.path.join(base, rel)
-                    os.makedirs(os.path.dirname(out), exist_ok=True)
-                    with open(out, 'wb') as w:
-                        w.write(base64.b64decode(b64))
-                model_path = self._find_model3(base)
-                return self._ok({ 'ok': True, 'model_path': model_path })
-            except Exception as e:
-                return self._fail(str(e))
-        if self.path == '/libs/fetch':
-            url = data.get('url')
-            name = data.get('name') or 'lib.js'
-            if not url:
-                return self._fail('no url')
-            try:
-                import urllib.request
-                req = urllib.request.Request(url, headers={'User-Agent':'TraeAgent'})
-                with urllib.request.urlopen(req) as r:
-                    buf = r.read()
-                out = os.path.join(ROOT, 'libs', name)
-                os.makedirs(os.path.dirname(out), exist_ok=True)
-                with open(out, 'wb') as f:
-                    f.write(buf)
-                return self._ok({ 'ok': True, 'path': 'libs/'+name })
-            except Exception as e:
-                return self._fail(str(e))
-        return self._fail('unknown path')
+            return self._fail('not implemented')
 
-    def _find_model3(self, base):
-        for root, _, files in os.walk(base):
-            for f in files:
-                if f.endswith('.model3.json'):
-                    p = os.path.relpath(os.path.join(root, f), ROOT)
-                    return p.replace('\\','/')
-        return None
-
-    def _ok(self, obj):
+    def _ok(self, data):
         self._set_headers(200)
-        self.wfile.write(json.dumps(obj).encode('utf-8'))
-
+        self.wfile.write(json.dumps(data).encode('utf-8'))
+    
     def _fail(self, msg):
         self._set_headers(400)
-        self.wfile.write(json.dumps({ 'ok': False, 'error': msg }).encode('utf-8'))
+        self.wfile.write(json.dumps({'error': msg}).encode('utf-8'))
+
+    def _find_model3(self, root):
+        for r, d, f in os.walk(root):
+            for n in f:
+                if n.endswith('.model3.json'):
+                    rel = os.path.relpath(os.path.join(r, n), ROOT)
+                    return rel.replace('\\', '/')
+        return ''
 
 if __name__ == '__main__':
-    ensure_dirs()
-    import argparse
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--host', default=os.environ.get('HOST', '0.0.0.0'))
-    parser.add_argument('--port', type=int, default=int(os.environ.get('PORT', '8001')))
-    args = parser.parse_args()
-
-    HTTPServer((args.host, args.port), Handler).serve_forever()
+    print('Starting server at http://localhost:8000')
+    httpd = HTTPServer(('localhost', 8000), Handler)
+    httpd.serve_forever()
