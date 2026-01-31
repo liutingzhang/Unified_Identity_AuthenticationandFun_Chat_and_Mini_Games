@@ -1,0 +1,81 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-gradient);
+  overflow-y: auto;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  animation: fadeInUp 1s ease-out;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px 0;
+  color: var(--text-light);
+  font-size: 14px;
+  font-family: 'Ma Shan Zheng', cursive;
+  background: var(--bg-surface);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border-color);
+  animation: fadeInUp 1.2s ease-out;
+}
+
+/* 许嵩风格内容动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 页面内容卡片样式 */
+.page-card {
+  background: var(--bg-surface);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: 0 12px 36px var(--shadow-light);
+  animation: cardFloat 3s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .main-content {
+    margin-top: 70px;
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
+  .page-card {
+    padding: 20px;
+    border-radius: var(--radius-md);
+  }
+}

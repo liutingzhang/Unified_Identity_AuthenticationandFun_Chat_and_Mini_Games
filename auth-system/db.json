@@ -1,0 +1,263 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "admin",
+            "password": "admin",
+            "userType": "超级管理员",
+            "name": "系统管理员",
+            "gender": "男",
+            "email": "admin@test.com",
+            "registered": "2023-01-01 10:00:00"
+        },
+        {
+            "username": "2",
+            "password": "2",
+            "name": "真",
+            "gender": "男",
+            "email": "",
+            "userType": "学生",
+            "registered": "2025-10-23T11:56:31.756Z",
+            "id": 3
+        },
+        {
+            "username": "23010349",
+            "password": "3",
+            "name": "帅",
+            "gender": "男",
+            "email": "",
+            "userType": "学生",
+            "registered": "2025-10-25T06:06:58.424Z",
+            "id": 4
+        },
+        {
+            "username": "3",
+            "password": "3",
+            "name": "3",
+            "gender": "男",
+            "email": "",
+            "userType": "老师",
+            "registered": "2025-11-06T06:25:16.583Z",
+            "id": "c7fc2a42"
+        },
+        {
+            "username": "1",
+            "password": "1",
+            "name": "1",
+            "gender": "男",
+            "email": "",
+            "userType": "超级管理员",
+            "registered": "2025-11-06T08:29:10.521Z",
+            "id": "65e1631d"
+        },
+        {
+            "username": "5",
+            "password": "5",
+            "name": "5",
+            "gender": "男",
+            "email": "",
+            "userType": "管理员",
+            "registered": "2025-11-06T15:13:43.290Z",
+            "id": "7e63cea7"
+        }
+    ],
+    "roles": [
+        {
+            "id": 1,
+            "name": "超级管理员",
+            "description": "拥有所有权限"
+        },
+        {
+            "id": "2",
+            "name": "学生",
+            "description": "拥有基本查看权限"
+        },
+        {
+            "name": "老师",
+            "description": "部分权限",
+            "id": "3"
+        },
+        {
+            "name": "管理员",
+            "description": "拥有大部分权限",
+            "id": 5
+        }
+    ],
+    "systems": [
+        {
+            "id": 1,
+            "name": "主应用",
+            "url": "http:\/\/localhost:5172",
+            "active": true
+        },
+        {
+            "id": 3,
+            "name": "AI聊天",
+            "url": "http:\/\/localhost:5174",
+            "active": true,
+            "status": "active"
+        },
+        {
+            "id": 4,
+            "name": "愤怒的小鸟",
+            "url": "\/yuxinrong\/angry_birds.html",
+            "active": true
+        }
+    ],
+    "permissions": {
+        "超级管理员": [
+            "user:list",
+            "user:manage",
+            "user:create",
+            "user:edit",
+            "user:delete",
+            "role:list",
+            "role:create",
+            "role:edit",
+            "role:delete",
+            "system:list",
+            "system:edit",
+            "log:list",
+            "permission:edit",
+            "vote:participate"
+        ],
+        "学生": [
+            "vote:participate"
+        ],
+        "老师": [
+            "user:list",
+            "system:list",
+            "token:edit",
+            "roll:call",
+            "user:manage",
+            "vote:participate",
+            "random:draw"
+        ],
+        "管理员": [
+            "user:manage",
+            "vote:participate",
+            "random:draw",
+            "roll:call",
+            "system:list"
+        ]
+    },
+    "votes": [],
+    "logs": [
+        {
+            "id": "1",
+            "user": "admin",
+            "action": "登录系统",
+            "ip": "127.0.0.1",
+            "time": "2023-10-27T10:00:00.000Z",
+            "source": "系统日志"
+        },
+        {
+            "user": "system",
+            "action": "创建角色: 老师",
+            "ip": "127.0.0.1",
+            "time": "2025-10-25T08:44:30.640Z",
+            "source": "系统日志",
+            "id": "a71be128"
+        },
+        {
+            "user": "admin",
+            "action": "创建用户: 3",
+            "ip": "127.0.0.1",
+            "time": "2025-10-25T08:44:43.144Z",
+            "source": "系统日志",
+            "id": "125df6f2"
+        },
+        {
+            "user": "system",
+            "action": "更新权限设置",
+            "ip": "127.0.0.1",
+            "time": "2025-10-25T08:45:46.615Z",
+            "source": "系统日志",
+            "id": "290f2425"
+        },
+        {
+            "user": "system",
+            "action": "更新权限设置",
+            "ip": "127.0.0.1",
+            "time": "2025-10-25T08:45:49.380Z",
+            "source": "系统日志",
+            "id": "016a0945"
+        },
+        {
+            "user": "system",
+            "action": "更新权限设置",
+            "ip": "127.0.0.1",
+            "time": "2025-10-25T08:45:53.107Z",
+            "source": "系统日志",
+            "id": "43318043"
+        },
+        {
+            "user": "system",
+            "action": "更新权限设置",
+            "ip": "127.0.0.1",
+            "time": "2025-10-25T08:45:55.006Z",
+            "source": "系统日志",
+            "id": "f22c042b"
+        },
+        {
+            "user": "system",
+            "action": "更新权限设置",
+            "ip": "127.0.0.1",
+            "time": "2025-10-25T08:46:01.113Z",
+            "source": "系统日志",
+            "id": "58bb3bd7"
+        },
+        {
+            "user": "system",
+            "action": "更新权限设置",
+            "ip": "127.0.0.1",
+            "time": "2025-10-25T08:46:13.496Z",
+            "source": "系统日志",
+            "id": "fa06b001"
+        },
+        {
+            "user": "system",
+            "action": "更新权限设置",
+            "ip": "127.0.0.1",
+            "time": "2025-10-25T08:48:25.030Z",
+            "source": "系统日志",
+            "id": "65a7e392"
+        },
+        {
+            "user": "1",
+            "action": "更新系统: AI聊天",
+            "ip": "127.0.0.1",
+            "time": "2026-01-31T10:44:14.752Z",
+            "source": "系统日志",
+            "id": "e5b227f0"
+        },
+        {
+            "user": "1",
+            "action": "更新系统: AI聊天",
+            "ip": "127.0.0.1",
+            "time": "2026-01-31T10:44:18.298Z",
+            "source": "系统日志",
+            "id": "f04948d3"
+        },
+        {
+            "user": "1",
+            "action": "更新系统: AI聊天",
+            "ip": "127.0.0.1",
+            "time": "2026-01-31T10:44:20.877Z",
+            "source": "系统日志",
+            "id": "0d4b6f29"
+        },
+        {
+            "user": "1",
+            "action": "更新系统: AI聊天",
+            "ip": "127.0.0.1",
+            "time": "2026-01-31T10:44:23.319Z",
+            "source": "系统日志",
+            "id": "2e4b1c42"
+        }
+    ],
+    "tokenConfig": {
+        "secretKey": "YOUR_DEFAULT_SECRET_KEY",
+        "tokenTtl": 3600
+    }
+}

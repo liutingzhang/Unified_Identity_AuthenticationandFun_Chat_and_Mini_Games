@@ -1,0 +1,660 @@
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-surface);
+  backdrop-filter: blur(20px);
+  padding: 0 40px;
+  height: 80px;
+  border-bottom: 2px solid var(--border-color);
+  box-shadow: 0 4px 30px var(--shadow-light);
+  position: relative;
+  z-index: 1000;
+  animation: navSlideIn 1s ease-out;
+}
+
+@keyframes navSlideIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 品牌图标多层次高级动效 */
+@keyframes logoLayeredPulse {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1) drop-shadow(0 0 0px rgba(141, 110, 99, 0));
+  }
+  25% { 
+    transform: scale(1.03) rotate(1deg);
+    filter: brightness(1.05) drop-shadow(0 0 4px rgba(141, 110, 99, 0.2));
+  }
+  50% { 
+    transform: scale(1.06) rotate(0deg);
+    filter: brightness(1.1) drop-shadow(0 0 8px rgba(141, 110, 99, 0.4));
+  }
+  75% { 
+    transform: scale(1.03) rotate(-1deg);
+    filter: brightness(1.05) drop-shadow(0 0 4px rgba(141, 110, 99, 0.2));
+  }
+}
+
+@keyframes logoOrbitalFloat {
+  0%, 100% { 
+    transform: translate(0px, 0px);
+  }
+  33% { 
+    transform: translate(1px, -1px);
+  }
+  66% { 
+    transform: translate(-1px, 1px);
+  }
+}
+
+@keyframes logoIrregularSway {
+  0%, 100% { 
+    transform: rotate(0deg);
+  }
+  15% { 
+    transform: rotate(5deg);
+  }
+  30% { 
+    transform: rotate(-4deg);
+  }
+  45% { 
+    transform: rotate(6deg);
+  }
+  60% { 
+    transform: rotate(-5deg);
+  }
+  75% { 
+    transform: rotate(3deg);
+  }
+  90% { 
+    transform: rotate(-2deg);
+  }
+}
+
+@keyframes logoVibration {
+  0%, 100% { 
+    transform: translate(0px, 0px);
+  }
+  10%, 30%, 50%, 70%, 90% { 
+    transform: translate(-1px, -1px);
+  }
+  20%, 40%, 60%, 80% { 
+    transform: translate(1px, 1px);
+  }
+}
+
+@keyframes logoGlowPulse {
+  0%, 100% { 
+    box-shadow: 
+      0 0 30px rgba(111, 78, 55, 0.4),
+      0 0 60px rgba(111, 78, 55, 0.2),
+      0 0 100px rgba(111, 78, 55, 0.1);
+  }
+  50% { 
+    box-shadow: 
+      0 0 40px rgba(141, 110, 99, 0.6),
+      0 0 80px rgba(141, 110, 99, 0.3),
+      0 0 120px rgba(141, 110, 99, 0.15);
+  }
+}
+
+@keyframes logoVibration {
+  0%, 100% { 
+    transform: translate(0px, 0px);
+  }
+  10%, 30%, 50%, 70%, 90% { 
+    transform: translate(-1px, -1px);
+  }
+  20%, 40%, 60%, 80% { 
+    transform: translate(1px, 1px);
+  }
+}
+
+@keyframes logoGlowPulse {
+  0%, 100% { 
+    box-shadow: 
+      0 0 30px rgba(141, 110, 99, 0.4),
+      0 0 60px rgba(141, 110, 99, 0.2),
+      0 0 100px rgba(141, 110, 99, 0.1);
+  }
+  50% { 
+    box-shadow: 
+      0 0 40px rgba(141, 110, 99, 0.6),
+      0 0 80px rgba(141, 110, 99, 0.3),
+      0 0 120px rgba(141, 110, 99, 0.15);
+  }
+}
+
+@keyframes logoBorderGlow {
+  0%, 100% { 
+    border-color: rgba(141, 110, 99, 0.1);
+    box-shadow: 0 0 0px rgba(141, 110, 99, 0);
+  }
+  50% { 
+    border-color: rgba(141, 110, 99, 0.3);
+    box-shadow: 0 0 12px rgba(141, 110, 99, 0.2);
+  }
+}
+
+@keyframes logoBackgroundShift {
+  0%, 100% { 
+    background: linear-gradient(135deg, rgba(141, 110, 99, 0.05), rgba(188, 170, 164, 0.05));
+  }
+  50% { 
+    background: linear-gradient(135deg, rgba(141, 110, 99, 0.08), rgba(188, 170, 164, 0.08));
+  }
+}
+
+/* 新增不规则运动动效 */
+@keyframes logoRandomBounce {
+  0%, 100% { 
+    transform: translate(0px, 0px);
+  }
+  12% { 
+    transform: translate(2px, -1px);
+  }
+  25% { 
+    transform: translate(-1px, 3px);
+  }
+  37% { 
+    transform: translate(3px, 1px);
+  }
+  50% { 
+    transform: translate(-2px, -2px);
+  }
+  62% { 
+    transform: translate(1px, 2px);
+  }
+  75% { 
+    transform: translate(-3px, -1px);
+  }
+  87% { 
+    transform: translate(2px, 1px);
+  }
+}
+
+@keyframes logoWaveMotion {
+  0%, 100% { 
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  20% { 
+    transform: translate(1px, -2px) rotate(1deg);
+  }
+  40% { 
+    transform: translate(-1px, 1px) rotate(-2deg);
+  }
+  60% { 
+    transform: translate(2px, -1px) rotate(3deg);
+  }
+  80% { 
+    transform: translate(-2px, 2px) rotate(-1deg);
+  }
+}
+
+@keyframes logoSpiralFloat {
+  0% { 
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  25% { 
+    transform: translate(3px, -2px) rotate(90deg);
+  }
+  50% { 
+    transform: translate(-2px, 3px) rotate(180deg);
+  }
+  75% { 
+    transform: translate(-3px, -1px) rotate(270deg);
+  }
+  100% { 
+    transform: translate(0px, 0px) rotate(360deg);
+  }
+}
+
+@keyframes logoChaoticDrift {
+  0%, 100% { 
+    transform: translate(0px, 0px) scale(1);
+  }
+  15% { 
+    transform: translate(2px, -1px) scale(1.02);
+  }
+  30% { 
+    transform: translate(-1px, 2px) scale(0.98);
+  }
+  45% { 
+    transform: translate(3px, 1px) scale(1.01);
+  }
+  60% { 
+    transform: translate(-2px, -2px) scale(0.99);
+  }
+  75% { 
+    transform: translate(1px, 3px) scale(1.03);
+  }
+  90% { 
+    transform: translate(-3px, -1px) scale(0.97);
+  }
+}
+
+@keyframes logoPulseBreathing {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+  25% { 
+    transform: scale(1.04);
+    opacity: 0.95;
+  }
+  50% { 
+    transform: scale(0.96);
+    opacity: 0.9;
+  }
+  75% { 
+    transform: scale(1.02);
+    opacity: 0.98;
+  }
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Ma Shan Zheng', cursive;
+}
+
+.brand-icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  animation: logoBackgroundShift 8s ease-in-out infinite;
+}
+
+.brand-icon {
+  width: 60px;
+  height: 60px;
+  animation: logoLayeredPulse 3s ease-in-out infinite, 
+             logoOrbitalFloat 5s ease-in-out infinite,
+             logoBorderGlow 4s ease-in-out infinite,
+             logoIrregularSway 7s ease-in-out infinite,
+             logoRandomBounce 8s ease-in-out infinite,
+             logoWaveMotion 6s ease-in-out infinite,
+             logoSpiralFloat 10s linear infinite,
+             logoChaoticDrift 9s ease-in-out infinite,
+             logoPulseBreathing 5s ease-in-out infinite;
+  transition: all 0.4s ease;
+  border-radius: 10px;
+  border: 2px solid rgba(141, 110, 99, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.brand-icon:hover {
+  transform: scale(1.1) rotate(2deg);
+  filter: brightness(1.2) drop-shadow(0 0 16px rgba(141, 110, 99, 0.6));
+  border-color: rgba(141, 110, 99, 0.5);
+  animation-play-state: paused;
+}
+
+/* 装饰性粒子效果 */
+.brand-icon::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 12px;
+  background: linear-gradient(45deg, transparent 30%, rgba(141, 110, 99, 0.1) 50%, transparent 70%);
+  animation: logoParticleOrbit 6s linear infinite;
+  z-index: 1;
+}
+
+@keyframes logoParticleOrbit {
+  0% { 
+    transform: rotate(0deg);
+    opacity: 0.3;
+  }
+  50% { 
+    opacity: 0.6;
+  }
+  100% { 
+    transform: rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+.particle-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90px;
+  height: 90px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: particleOrbit 6s linear infinite;
+}
+
+.particle-ring::before,
+.particle-ring::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(45deg, #FFD700, #FF8C00);
+  border-radius: 50%;
+  animation: particleGlow 2s ease-in-out infinite;
+}
+
+.particle-ring::before {
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 0s;
+}
+
+.particle-ring::after {
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 1s;
+}
+
+.sparkle-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  animation: sparkleRotate 8s linear infinite;
+}
+
+.sparkle-effect::before,
+.sparkle-effect::after {
+  content: '✦';
+  position: absolute;
+  font-size: 16px;
+  color: #FFD700;
+  animation: sparkleTwinkle 1.5s ease-in-out infinite;
+}
+
+.sparkle-effect::before {
+  top: 10px;
+  left: 10px;
+  animation-delay: 0s;
+}
+
+.sparkle-effect::after {
+  bottom: 10px;
+  right: 10px;
+  animation-delay: 0.75s;
+}
+
+.brand-text {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 10px var(--shadow-light);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 25px;
+  transition: all 0.4s ease;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  font-size: 16px;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(141, 110, 99, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.nav-item:hover::before {
+  left: 100%;
+}
+
+.nav-item:hover {
+  background: rgba(141, 110, 99, 0.08);
+  color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px var(--shadow-medium);
+}
+
+.nav-item.active {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  box-shadow: 0 8px 25px var(--shadow-dark);
+}
+
+.nav-group-container {
+  position: relative;
+}
+
+.nav-group-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+}
+
+.nav-group-trigger:hover {
+  background: rgba(141, 110, 99, 0.08);
+  color: var(--primary-color);
+}
+
+.dropdown-arrow {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+  margin-left: 5px;
+}
+
+.nav-group-container:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, rgba(250, 250, 250, 0.98) 0%, rgba(239, 235, 233, 0.98) 100%);
+  backdrop-filter: blur(30px);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px var(--shadow-medium);
+  min-width: 220px;
+  z-index: 1001;
+  overflow: hidden;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 25px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(188, 170, 164, 0.3);
+  font-size: 15px;
+}
+
+.nav-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.nav-dropdown-item:hover {
+  background: rgba(141, 110, 99, 0.05);
+  color: var(--primary-color);
+  padding-left: 30px;
+}
+
+.nav-dropdown-item.active {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+}
+
+.nav-xusong {
+  display: flex;
+  align-items: center;
+}
+
+.xusong-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  padding: 10px 20px;
+  border-radius: 30px;
+  box-shadow: 0 6px 20px var(--shadow-medium);
+  animation: badgePulse 3s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { 
+    box-shadow: 0 6px 20px var(--shadow-medium);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 8px 30px var(--shadow-dark);
+    transform: scale(1.05);
+  }
+}
+
+.xusong-kanji {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  font-family: 'Ma Shan Zheng', cursive;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.xusong-title {
+  font-size: 14px;
+  color: white;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.nav-icon {
+  font-size: 20px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .top-nav {
+    padding: 0 20px;
+  }
+  
+  .nav-menu {
+    gap: 10px;
+  }
+  
+  .nav-item, .nav-group-trigger {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-nav {
+    padding: 0 15px;
+    height: 70px;
+  }
+  
+  .nav-brand {
+    font-size: 22px;
+    gap: 10px;
+  }
+  
+  .brand-icon {
+    font-size: 28px;
+  }
+  
+  .nav-menu {
+    gap: 5px;
+  }
+  
+  .nav-item, .nav-group-trigger {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  
+  .xusong-badge {
+    padding: 8px 15px;
+  }
+  
+  .xusong-kanji {
+    font-size: 18px;
+  }
+  
+  .xusong-title {
+    font-size: 12px;
+  }
+  
+  .nav-dropdown {
+    min-width: 180px;
+  }
+  
+  .nav-dropdown-item {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}

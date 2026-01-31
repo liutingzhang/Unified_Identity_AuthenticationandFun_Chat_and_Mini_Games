@@ -1,0 +1,118 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(25px) saturate(180%);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 
+    0 4px 20px rgba(111, 78, 55, 0.03),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.5);
+  animation: fadeInUp 0.8s ease-out;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.welcome-text {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--text-secondary);
+  font-size: 17px;
+  font-weight: 600;
+  font-family: 'Ma Shan Zheng', cursive;
+  letter-spacing: 0.5px;
+}
+
+.welcome-icon {
+  font-size: 22px;
+  color: var(--primary-color);
+  filter: drop-shadow(0 2px 4px rgba(111, 78, 55, 0.2));
+  background: rgba(111, 78, 55, 0.05);
+  padding: 6px;
+  border-radius: 50%;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.logout-icon {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.logout-btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover-color));
+  color: white;
+  border: none;
+  padding: 10px 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-bounce);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.8px;
+  box-shadow: 
+    0 4px 15px rgba(111, 78, 55, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.logout-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transition: left 0.6s ease;
+}
+
+.logout-btn:hover::before {
+  left: 100%;
+}
+
+.logout-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 12px 28px rgba(111, 78, 55, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.logout-btn:active {
+  transform: translateY(-1px);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 20px;
+    height: 60px;
+  }
+  
+  .header-right {
+    gap: 15px;
+  }
+  
+  .header-right span {
+    font-size: 14px;
+  }
+  
+  .logout-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}

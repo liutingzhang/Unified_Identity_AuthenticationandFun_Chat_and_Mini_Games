@@ -1,0 +1,29 @@
+{
+  "name": "auth-system",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "start \"Vite\" cmd /c \"vite --port 5172 --host\" & start \"PHP\" cmd /c \"cd api && php -S localhost:8000 index.php\"",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.12.2",
+    "papaparse": "5.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dropzone": "^14.3.8",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^6.22.3",
+    "styled-components": "^6.1.19",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^4.2.1",
+    "concurrently": "^9.2.1",
+    "vite": "^5.2.0"
+  }
+}

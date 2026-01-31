@@ -1,0 +1,15 @@
+**/node_modules/
+**/.vite/
+**/dist/
+**/dist-ssr/
+**/.vercel/
+**/.vscode/
+**/.idea/
+*.log
+.DS_Store
+Thumbs.db
+ainvyou/Python/
+ainvyou/backups/
+php/
+node/
+VC_redist.x64.exe
